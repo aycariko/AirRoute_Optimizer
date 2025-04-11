@@ -1,0 +1,20 @@
+{
+  "name": "AirRoute Optimizer",
+  "short_name": "AirRoute",
+  "start_url": "./text.html",
+  "display": "standalone",
+  "background_color": "#1565C0",
+  "theme_color": "#1565C0",
+  "icons": [
+    {
+      "src": "icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

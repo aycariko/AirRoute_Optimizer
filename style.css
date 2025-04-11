@@ -1,0 +1,159 @@
+/*box-1 sınıfı içerisndeki etiketi stilize ettik*/
+ .box-1 h1 {
+    color:#2C3E50;
+    font-size: 20px;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    word-spacing: 1em;
+
+}
+h2 {
+    color: blue;
+    font-size: 18px;
+    font-family: Arial, sans-serif;
+}   
+/*sayfanın genel ayarları*/
+body {
+    background-image: url('uçak.png');
+    background-size: cover; /* Resmin tüm alanı kaplamasını sağlar */
+    background-position: center; /* Resmi ortalar */
+    background-repeat: no-repeat; /* Resmin tekrar etmesini engeller */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6em;
+}
+
+/*extra text sınıfına sahip yazıları italic ve kalın yapar*/
+.extra-text{
+    color: #2C3E50;
+    font-size: 18px;
+    font-weight: bold;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    text-align: center;
+    margin-top: 42px;
+    padding: 0;
+    word-spacing: 0.1em;
+    
+}
+/* Kutunun genel yapısı */
+.box-1 {
+    background: #fff;
+    color: #2C3E50;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+    width: 130%; /* Kutunun, container genişliğini kullanmasını sağladık */
+    max-width: 1000px; /* Maksimum genişlik belirledik */
+    text-align: left; /* İçeriği ortaladık */
+    margin: 0 auto; /* Kutuyu ortalamak için */
+    font-size: 18px;
+    font-weight: bold;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .box-1 h1 {
+        font-size: 18px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    body {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .box-1 h1 {
+        font-size: 16px;
+    }
+
+    h2 {
+        font-size: 14px;
+    }
+
+    body {
+        font-size: 10px;
+    }
+}
+.container {
+    width: 80%; /* Tarayıcı genişliğinin %80'i */
+    max-width: 1000px; /* Maksimum genişlik belirledik */
+    margin: 50px auto; /* Sayfanın ortasına getirdik */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Sayfanın tamamını kaplamasını sağladık */
+    
+}
+/*
+.categories {
+    background: #6097b9;
+    color:#2C3E50;
+    padding: 10px;
+    margin: 10px 0;
+   
+}*/
+
+
+/* Navbar ayarlama*/
+
+.navbar {
+    width: 100%; /* Sayfanın tam genişliğinde olmasını sağlar */
+    max-width: 100%; /* Maksimum genişlik belirleme (isteğe bağlı) */
+    margin: 0 auto; /* Navbar'ı ortalamak için */
+    padding: 0 20px; /* Kenar boşlukları ekleme (isteğe bağlı) */
+    display: flex;
+    justify-content: space-between; /* Navbar içeriğini eşit aralıklarla dağıtma */
+    align-items: center; /* Navbar içeriğini dikey hizalama */
+    
+    color: white; /* Navbar metin rengi */
+    height: 80px; /* Yüksekliği artır */
+    line-height: 80px; /* İçeriği ortalamak için */
+}
+
+/* Navbar içeriğini genişletme */
+.navbar-collapse {
+    width: 100%; /* Navbar içeriğini tam genişlikte yapma */
+    display: flex;
+    justify-content: space-between; /* Menü öğelerini eşit aralıklarla dağıtma */
+}
+
+.navbar-nav {
+    width: 100%; /* Menü öğelerini tam genişlikte yapma */
+    display: flex;
+    justify-content: space-between; /* Menü öğelerini eşit aralıklarla dağıtma */
+    padding: 0; /* Varsayılan padding'i kaldırma */
+    margin: 0; /* Varsayılan margin'i kaldırma */
+}
+
+.nav-item {
+    padding: 0 12px; /* Menü öğeleri arasına boşluk ekleme */
+}
+
+.nav-link {
+    color: white; /* Menü metin rengi */
+    text-decoration: none; /* Alt çizgiyi kaldırma */
+}
+
+.nav-link:hover {
+    color: #435b73; /* Fare üzerine gelindiğinde metin rengi */
+}
+
+/* Navbar toggler düğmesi için stil */
+.navbar-toggler {
+    border-color: rgb(38, 57, 66); /* Toggler düğmesi kenarlık rengi */
+}
+
+.navbar-toggler-icon {
+    background-color: rgb(78, 112, 164); /* Toggler düğmesi ikon rengi */
+}

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ucuz Uçak Bileti Ara</title>
+    
+    <style>
+        body {
+            background-color: #f5f5f5;
+            font-family: Arial, sans-serif;
+        }
+        .navbar {
+            background-color: white !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .navbar-brand {
+            color: #333 !important;
+            font-weight: bold;
+        }
+        .nav-link {
+            color: #333 !important;
+        }
+        .nav-item.active .nav-link {
+            color: #007bff !important;
+        }
+        .service-menu {
+            background-color: white;
+            border-bottom: 1px solid #eee;
+        }
+        .service-item {
+            padding: 15px;
+            text-align: center;
+            color: #555;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .service-item:hover, .service-item.active {
+            color: #007bff;
+            background-color: #f8f9fa;
+        }
+        .service-item i {
+            font-size: 24px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .search-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 30px;
+            margin-top: 20px;
+        }
+        .trip-type {
+            background-color: #f8f9fa;
+            border-radius: 25px;
+            padding: 5px;
+            margin-bottom: 25px;
+        }
+        .trip-type label {
+            padding: 8px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            text-align: center;
+            width: 50%;
+            margin: 0;
+        }
+        .trip-type input[type="radio"] {
+            display: none;
+        }
+        .trip-type input[type="radio"]:checked + label {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            font-weight: bold;
+            color: #555;
+        }
+        .form-control {
+            height: 50px;
+            border: 1px solid #ddd;
+        }
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #007bff;
+        }
+        .search-btn {
+            background-color: #ff7d00;
+            border: none;
+            height: 50px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        .search-btn:hover {
+            background-color: #e67100;
+        }
+        .destination-switch {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px;
+        }
+        .destination-switch button {
+            border: none;
+            background: none;
+            color: #007bff;
+            font-size: 20px;
+        }
+        .date-info {
+            font-size: 12px;
+            color: #666;
+            display: block;
+            margin-top: 2px;
+        }
+        .hero-section {
+            background-color: #e6f2ff;
+            padding: 20px 0;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .hero-text {
+            font-style: italic;
+            color: #333;
+        }
+        .search-suggestion {
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .search-suggestion i {
+            color: #ff7d00;
+            font-size: 24px;
+            margin-right: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <link rel="manifest" href="manifest.json">
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("service-worker.js")
+          .then(() => console.log("Service Worker registered"))
+          .catch((error) => console.error("Service Worker registration failed:", error));
+      }
+    </script>
+    
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">AirRoute Optimizer</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Bilet İşlemleri</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Keşfet</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">İletişim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Üye Girişi</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Service Menu -->
+    <div class="service-menu">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 service-item active">
+                    <i class="fas fa-plane"></i>
+                    Ucuz Uçak Bileti Ara
+                </div>
+                <div class="col-md-3 service-item">
+                    <i class="fas fa-check-circle"></i>
+                    Online Check-In
+                </div>
+                <div class="col-md-3 service-item">
+                    <i class="fas fa-cogs"></i>
+                    Uçuşunu Yönet
+                </div>
+                <div class="col-md-3 service-item">
+                    <i class="fas fa-car"></i>
+                    Araç Kiralama / Konaklama
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Message -->
+    <div class="hero-section">
+        <div class="container">
+            <h5 class="hero-text">Environmentally Friendly Transportation, as Fast as Your Flight</h5>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="search-container">
+            <h4 class="mb-4">UCUZ UÇUŞ ARA</h4>
+            
+            <!-- Trip Type Selection -->
+            <div class="trip-type">
+                <input type="radio" id="one-way" name="trip-type" checked>
+                <label for="one-way">Tek Yön</label>
+                <input type="radio" id="round-trip" name="trip-type">
+                <label for="round-trip">Gidiş Dönüş</label>
+            </div>
+            
+            <div class="row">
+                <!-- From Field -->
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="from">Nereden:</label>
+                        <select id="from" class="form-control">
+                            <option value="">Seçiniz</option>
+                            <option value="IST">İstanbul</option>
+                            <option value="ANK">Ankara</option>
+                            <option value="IZM">İzmir</option>
+                            <option value="ADA">Adana</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <!-- Switch Button -->
+                <div class="col-md-2">
+                    <div class="destination-switch">
+                        <button type="button">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- To Field -->
+                <div class="col-md-5">
+                    <div class="form-group">
+                        <label for="to">Nereye:</label>
+                        <select id="to" class="form-control">
+                            <option value="">Seçiniz</option>
+                            <option value="IST">İstanbul</option>
+                            <option value="ANK">Ankara</option>
+                            <option value="IZM">İzmir</option>
+                            <option value="ADA">Adana</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row">
+                <!-- Departure Date -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="departure-date">Gidiş Tarihi:</label>
+                        <input type="date" id="departure-date" class="form-control">
+                        <span class="date-info">31 Mart Pazartesi</span>
+                    </div>
+                </div>
+                
+                <!-- Return Date -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="return-date">Dönüş Tarihi:</label>
+                        <input type="date" id="return-date" class="form-control">
+                    </div>
+                </div>
+                
+                <!-- Passenger Count -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="passenger">Yolcu Sayısı:</label>
+                        <select id="passenger" class="form-control">
+                            <option value="1">1 Yetişkin</option>
+                            <option value="2">2 Yetişkin</option>
+                            <option value="3">3 Yetişkin</option>
+                            <option value="4">4 Yetişkin</option>
+                            <option value="5">5 Yetişkin</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Search Button -->
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button id="search-btn" class="btn search-btn btn-lg btn-block">UCUZ UÇUŞ ARA</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Search Suggestion -->
+        <div class="search-suggestion">
+            <i class="fas fa-lightbulb"></i>
+            <div>
+                <h5 class="mb-0">Peki Şimdi Nereye?</h5>
+                <p class="mb-0">Tarzına ve bütçene göre seyahati şimdi keşfet!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap ve jQuery için gerekli JavaScript dosyaları -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="main.js"></script>
+</body>
+</html>

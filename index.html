@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AirRoute Optimizer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-cover bg-center bg-no-repeat font-serif text-sm leading-relaxed" style="background-image: url('uçak.png');">
+  <link rel="manifest" href="manifest.json">
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("service-worker.js")
+        .then(() => console.log("Service Worker registered"))
+        .catch((error) => console.error("Service Worker registration failed:", error));
+    }
+  </script>
+
+<!-- Navbar -->
+<nav class="bg-[#182c6e] w-full p-4 flex justify-between items-center">
+  <a class="text-white text-lg font-semibold" href="#">AirRoute Optimizer</a>
+  <div class="hidden md:flex space-x-8">
+    <a class="text-white hover:text-blue-300" href="">Bilet İşlemleri</a>
+    <!--check in işlemleri-->
+    <a class="text-white hover:text-blue-300" href="keşfet.html">Keşfet</a>
+    <!--keşfet kısmında vizesiz ülkeler nereye ne kadar gidilir-->
+    <!--pegasus blog-->
+    <a class="text-white hover:text-blue-300" href="ilham_al.html">İlham Al</a>
+    <!--seyehat planlama için şehirlere göre bilet alımı ve romantikleştirme-->
+    <a class="text-white hover:text-blue-300" href="pegasus_dergi.html">Dergi Arşivi</a>
+    <a class="text-white hover:text-blue-300" href="#">Giriş Yap</a>
+  </div>
+</nav>
+
+  <!-- Extra Text -->
+  <div class="text-center mt-10 italic font-bold text-lg text-gray-800">
+    Environmentally Friendly Transportation, as Fast as Your Flight
+  </div>
+
+  <!-- Form Alanı -->
+  <div class="flex justify-center items-center min-h-screen px-4">
+    <div class="bg-white text-gray-800 shadow-lg rounded-xl p-8 w-full max-w-xl text-base font-semibold">
+      <p class="text-xl font-bold text-center text-gray-900 uppercase mb-4 tracking-wider">UCUZ UÇUŞ ARA</p>
+
+      <label for="from" class="block mb-1">Nereden:</label>
+      <select id="from" class="w-full border rounded px-3 py-2 mb-4">
+        <option value="">Seçiniz</option>
+      </select>
+
+      <label for="to" class="block mb-1">Nereye:</label>
+      <select id="to" class="w-full border rounded px-3 py-2 mb-4">
+        <option value="">Seçiniz</option>
+      </select>
+
+      <label for="date" class="block mb-1">Tarih:</label>
+      <input type="date" id="date" class="w-full border rounded px-3 py-2 mb-4">
+
+      <label for="passenger" class="block mb-1">Yolcu Sayısı:</label>
+      <input type="number" id="passenger" class="w-full border rounded px-3 py-2 mb-4">
+
+
+      <button id="search-btn" class="w-full bg-[#182c6e] text-white py-2 rounded hover:bg-blue-800 transition">Uçuş Ara</button>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+
+</html>  
+    
+
+    <!-- Bootstrap ve jQuery için gerekli JavaScript dosyaları -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
